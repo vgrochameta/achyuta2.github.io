@@ -25,5 +25,24 @@
 </head>
 <body>
     <h1>Facebook Pixel Testing</h1>
+
+    <h1>Facebook Pixel Add to Cart Test</h1>
+    <!-- Button to simulate Add to Cart -->
+    <button id="addToCartButton">Add to Cart</button>
+
+    <!-- JavaScript to trigger the addToCart event -->
+    <script>
+        document.getElementById('addToCartButton').addEventListener('click', function() {
+            fbq('track', 'AddToCart', {
+                content_name: 'Test Product',
+                content_category: 'Example Category',
+                content_ids: ['1234'],
+                content_type: 'product',
+                value: 50.00,
+                currency: 'USD'
+            });
+            alert('Add to Cart event triggered!');
+        });
+    </script>
 </body>
 </html>

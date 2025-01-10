@@ -14,7 +14,10 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1104807134352801'); 
+        fbq('init', '1104807134352801', {
+            autoConfig: true,
+            em: true // Enables automatic advanced matching for email, phone, and other fields
+        }); 
         fbq('track', 'PageView');
     </script>
     <noscript>
@@ -59,8 +62,7 @@
                 content_type: 'product',
                 value: 50.00,
                 currency: 'USD',
-                user_name: name,
-                user_email: email
+                user_name: name
             });
         });
     </script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Pixel Add to Cart with Form</title>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '41802430634171');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=41802430634171&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body>
+    
+    <h1>Facebook Pixel Add to Cart Test</h1>
+    <img src="bakers_and_packers.jpeg" width="400"/>
+    <p>Thank you for triggering a page view. If you want to trigger a cart event, just fill the form below with dummy data: </p>
+    <!-- Form to collect Name and Email -->
+    <form id="userDetailsForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required><br><br>
+
+        <button type="button" id="addToCartButton">Add to Cart</button>
+
+        <button type="button" id="addToWishlistButton">Add to Wishlist</button>
+    </form>
+
+    <!-- JavaScript to trigger the addToCart event -->
+    <script>
+        document.getElementById('addToCartButton').addEventListener('click', function() {
+            // Get the values from the form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (!name) {
+                alert('Please enter a dummy name');
+                return;
+            }
+
+            // Trigger Facebook Pixel AddToCart event with user data
+            fbq('track', 'AddToCart', {
+                content_name: 'Test Product',
+                content_category: 'Example Category',
+                content_ids: ['1234'],
+                content_type: 'product',
+                value: 50.00,
+                currency: 'USD',
+                user_name: name
+            });
+            alert('AddToCart event sent');
+        });
+    </script>
+</body>
+</html>
